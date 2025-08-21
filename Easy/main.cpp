@@ -15,7 +15,6 @@
 #include "TwoTitForTat.h"
 #include "TitForTwoTat.h"
 #include "Turn.h"
-#include "Percentor.h"
 
 // 策略信息结构
 struct StrategyInfo {
@@ -31,8 +30,7 @@ static const std::vector<StrategyInfo> strategyList = {
     {4, "以牙还牙"},
     {5, "两报还一报"},
     {6, "一报还两报"},
-    {7, "交替策略"},
-    {8, "测敌者"}
+    {7, "交替策略"}
 };
 
 // 根据ID创建策略实例
@@ -45,7 +43,6 @@ static std::unique_ptr<IStrategy> createStrategyByID(int id) {
     case 5: return std::make_unique<TwoTitForTat>();
     case 6: return std::make_unique<TitForTwoTat>();
     case 7: return std::make_unique<Turn>();
-    case 8: return std::make_unique<Percentor>();
     default:
         std::cout << "无效编号，使用永远合作\n";
         return std::make_unique<AlwaysCooperate>();
